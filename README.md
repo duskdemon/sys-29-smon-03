@@ -128,10 +128,10 @@
 Скриншоты настройки линка на карте (1) и визуализации сработавшего триггера (2) при недоступности агента на машине:
 
 Скриншот 1
-![Настройки линка](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-lnk1.png)
+![Настройки линка](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-03-zabb-lnk1.png)
 
 Скриншот 2
-![Срабатывание триггера линка](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-lnk2.png)
+![Срабатывание триггера линка](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-03-zabb-lnk2.png)
 
 ---
 YOU ARE HERE
