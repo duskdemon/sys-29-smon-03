@@ -134,8 +134,6 @@
 ![Срабатывание триггера линка](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-03-zabb-lnk2.png)
 
 ---
-YOU ARE HERE
----
 
 ### Задание 6* со звёздочкой
 Создайте UserParameter на bash и прикрепите его к созданному вами ранее шаблону. Он должен вызывать скрипт, который:
@@ -149,9 +147,23 @@ YOU ARE HERE
 
 ### Решение 6 
 
-1. Заходим на ВМ, которая будет выполняет роль сервера по ssh
+код скрипта на bash следующий:
+```
+#!/bin/bash
 
-![Админка Заббикс](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-srv1.png)
+a1='Dunaev Dmitriy'
+a2=$(date '+today is %D')
+#read -r v
+for var in "$@"
+do
+    if [ $1 -eq 1 ] ; then echo $a1; exit 0;
+    elif [ $1 -eq 2 ] ; then echo $a2; exit 0;
+    else echo "please input 1 or 2"; exit 1;
+    fi;
+done
+```
+
+Скриншоты см. в решении 7
 
 ---
 
@@ -168,41 +180,33 @@ YOU ARE HERE
 
 ### Решение 7 
 
-1. Заходим на ВМ, которая будет выполняет роль сервера по ssh
+код доработанного скрипта на python следующий:
+```
+import sys
+import os
+import re
+from datetime import datetime
+now = datetime.now()
+if (sys.argv[1] == '-ping'): # Если -ping
+	result=os.popen("ping -c 1 " + sys.argv[2]).read() # Делаем пинг по заданному адресу
+	result=re.findall(r"time=(.*) ms", result) # Выдёргиваем из результата время
+	print(result[0]) # Выводим результат в консоль
+elif (sys.argv[1] == '-simple_print'): # Если simple_print
+	print(sys.argv[2]) # Выводим в консоль содержимое sys.arvg[2]
+elif (sys.argv[1] == '1'): # Если 1
+    print(f"Dunaev Dmitriy") # Выводим в консоль имя и фамилию
+elif (sys.argv[1] == '2'): # Если 2
+    print(f"Date is {now}") # Выводим в консоль дату
+else: # Во всех остальных случаях
+	print(f"unknown input: {sys.argv[1]}") # Выводим непонятый запрос в консоль
+```
 
-![Админка Заббикс](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-srv1.png)
+Скриншоты настройки шаблона (1) и результаты работы скриптов UserParameter (2):
 
+Скриншот 1
+![Настройки шаблона](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-03-zabb-tmup.png)
+
+Скриншот 2
+![Результаты работы скриптов](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-03-zabb-scrs.png)
 ---
 
-### Задание 8* со звёздочкой
-
-Настройте автообнаружение и прикрепление к хостам созданного вами ранее шаблона.
-
-#### Требования к результату
-- [ ] Прикрепите в файл README.md скриншот правила обнаружения, а также скриншот страницы Discover, где видны оба хоста.*
-
- ---
-
-### Решение 8 
-
-1. Заходим на ВМ, которая будет выполняет роль сервера по ssh
-
-![Админка Заббикс](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-srv1.png)
-
----
-
-### Задание 9* со звёздочкой
-
-Доработайте скрипты Vagrant для 2-х агентов, чтобы они были готовы к автообнаружению сервером, а также имели на борту разработанные вами ранее параметры пользователей.
-
-- [ ] Приложите в GitHub файлы Vagrantfile и zabbix-agent.sh.*
-
----
-
-### Решение 9 
-
-1. Заходим на ВМ, которая будет выполняет роль сервера по ssh
-
-![Админка Заббикс](https://github.com/duskdemon/sys-29-smon-03/blob/main/img/hw-02-zabb-srv1.png)
-
----
